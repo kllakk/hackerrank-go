@@ -3,9 +3,9 @@ package tests
 import (
 	"bufio"
 	"fmt"
+	quts "hackerrank-go/src/queue-using-two-stacks"
 	"hackerrank-go/tools"
 	"os"
-	quts "queue-using-two-stacks"
 	"reflect"
 	"strconv"
 	"strings"

@@ -2,7 +2,9 @@ package tools
 
 import (
 	"bufio"
+	"io"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -35,4 +37,13 @@ func ReadAsSlices(filepath string) []string {
 	CheckError(err)
 
 	return result
+}
+
+func ReadLine(reader *bufio.Reader) string {
+	str, _, err := reader.ReadLine()
+	if err == io.EOF {
+		return ""
+	}
+
+	return strings.TrimRight(string(str), "\r\n")
 }

@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-func exec(testId int, ts *testing.T) {
+func execSaveHumanity(testId int, ts *testing.T) {
 	go tools.PanicOnTimeout(4 * time.Second)
 
 	file, err := os.Open(fmt.Sprintf("save-humanity/test-%d-input.txt", testId))
@@ -22,10 +22,10 @@ func exec(testId int, ts *testing.T) {
 
 	var result []string
 
-	buffer := make([]byte, tools.MaxBuffer)
-
 	var t int32 = 0
 	fistLine := true
+
+	buffer := make([]byte, tools.MaxBuffer)
 	scanner := bufio.NewScanner(file)
 	scanner.Buffer(buffer, tools.MaxBuffer)
 
@@ -60,17 +60,17 @@ func exec(testId int, ts *testing.T) {
 }
 
 func TestSaveHumanity00(ts *testing.T) {
-	exec(0, ts)
+	execSaveHumanity(0, ts)
 }
 
 func TestSaveHumanity01(ts *testing.T) {
-	exec(1, ts)
+	execSaveHumanity(1, ts)
 }
 
 func TestSaveHumanity03(ts *testing.T) {
-	exec(3, ts)
+	execSaveHumanity(3, ts)
 }
 
 func TestSaveHumanity05(ts *testing.T) {
-	exec(5, ts)
+	execSaveHumanity(5, ts)
 }
