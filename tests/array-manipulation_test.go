@@ -89,3 +89,7 @@ func TestArrayManipulation01(ts *testing.T) {
 func TestArrayManipulation02(ts *testing.T) {
 	execArrayManipulation00(2, ts)
 }
+
+func TestArrayManipulation13(ts *testing.T) {
+	execArrayManipulation00(13, ts)
+}

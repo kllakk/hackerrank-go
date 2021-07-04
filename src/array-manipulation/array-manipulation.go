@@ -1,23 +1,23 @@
 package array_manipulation
 
 func ArrayManipulation(n int32, queries [][]int32) int64 {
-	var max int64 = 0
-
-	var previous = make([]int64, n)
-	for i := range previous {
-		previous[i] = 0
+	values := make([]int64, n)
+	for i := range queries {
+		a := int64(queries[i][0])
+		b := int64(queries[i][1])
+		k := int64(queries[i][2])
+		values[a-1] += k
+		if b < int64(n) {
+			values[b] -= k
+		}
 	}
 
-	for q := range queries {
-		query := queries[q]
-		chunk := previous[query[0] - 1:query[1]]
-
-		for i := range chunk {
-			chunk[i] = chunk[i] + int64(query[2])
-
-			if chunk[i] > max {
-				max = chunk[i]
-			}
+	var max int64 = 0
+	var sum int64 = 0
+	for i := range values {
+		sum = sum + values[i]
+		if max < sum {
+			max = sum
 		}
 	}
 
